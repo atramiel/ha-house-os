@@ -1,0 +1,94 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up House OS",
+        "data": {
+          "crew_day": "Garden crew day",
+          "crew_sensors": "Yard person-detection sensors",
+          "day_start_hour": "Daytime starts",
+          "day_end_hour": "Daytime ends",
+          "min_visit_minutes": "Shortest visit that counts",
+          "gap_minutes": "Longest gap inside one visit",
+          "battery_threshold": "Low battery at or below"
+        },
+        "data_description": {
+          "crew_sensors": "The cameras' person-detected sensors that cover the yard and driveway.",
+          "min_visit_minutes": "Detections lasting at least this long on crew day count as a crew visit.",
+          "gap_minutes": "Detections closer together than this belong to the same visit."
+        },
+        "description": "Tracks your garden crew from the cameras and rolls up what needs attention in each room."
+      }
+    },
+    "error": {
+      "end_before_start": "Daytime must end after it starts."
+    },
+    "abort": {
+      "single_instance_allowed": "House OS is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "House OS options",
+        "data": {
+          "crew_day": "Garden crew day",
+          "crew_sensors": "Yard person-detection sensors",
+          "day_start_hour": "Daytime starts",
+          "day_end_hour": "Daytime ends",
+          "min_visit_minutes": "Shortest visit that counts",
+          "gap_minutes": "Longest gap inside one visit",
+          "battery_threshold": "Low battery at or below"
+        },
+        "data_description": {
+          "crew_sensors": "The cameras' person-detected sensors that cover the yard and driveway.",
+          "min_visit_minutes": "Detections lasting at least this long on crew day count as a crew visit.",
+          "gap_minutes": "Detections closer together than this belong to the same visit."
+        }
+      }
+    },
+    "error": {
+      "end_before_start": "Daytime must end after it starts."
+    }
+  },
+  "selector": {
+    "weekday": {
+      "options": {
+        "mon": "Monday",
+        "tue": "Tuesday",
+        "wed": "Wednesday",
+        "thu": "Thursday",
+        "fri": "Friday",
+        "sat": "Saturday",
+        "sun": "Sunday"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "crew_last_arrival": {
+        "name": "Garden crew last arrival"
+      },
+      "crew_last_departure": {
+        "name": "Garden crew last departure"
+      },
+      "crew_last_visit_length": {
+        "name": "Garden crew last visit length"
+      },
+      "crew_next_visit": {
+        "name": "Garden crew next visit"
+      },
+      "house_attention": {
+        "name": "Attention"
+      },
+      "area_attention": {
+        "name": "Attention"
+      }
+    },
+    "binary_sensor": {
+      "crew_on_site": {
+        "name": "Garden crew on site"
+      }
+    }
+  }
+}

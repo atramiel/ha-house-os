@@ -1,0 +1,14 @@
+{
+  "domain": "house_os",
+  "name": "House OS",
+  "after_dependencies": ["recorder"],
+  "codeowners": ["@atramiel"],
+  "config_flow": true,
+  "documentation": "https://github.com/atramiel/ha-house-os",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/atramiel/ha-house-os/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0"
+}
