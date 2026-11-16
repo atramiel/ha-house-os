@@ -38,7 +38,8 @@ outlives the cameras' history.
 - Battery sensors at or below the threshold.
 
 A device's room is its HA area. Things with no area are listed under `no_room` on
-`sensor.house_os_attention`.
+`sensor.house_os_attention`. Offline devices with no room (mostly network clients such as
+away phones) are listed there but don't count toward the total.
 
 ## Install
 1. HACS / Marketplace → ⋮ → Custom repositories → `https://github.com/atramiel/ha-house-os`,

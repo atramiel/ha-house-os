@@ -45,7 +45,14 @@ async def test_room_rollup(hass: HomeAssistant) -> None:
     hass.states.async_set(l.entity_id, "unavailable")
     hass.states.async_set(u.entity_id, "off")  # update entities don't count
 
+    # An offline device with no room (an away phone) is listed but not counted.
+    phone = devs.async_get_or_create(config_entry_id=other.entry_id, identifiers={("aqara", "phone")}, name="Phone")
+    p = ents.async_get_or_create("device_tracker", "aqara", "phone", device_id=phone.id, config_entry=other)
+    hass.states.async_set(p.entity_id, "unavailable")
+
     await _setup(hass)
+    total = hass.states.get("sensor.house_os_attention")
+    assert total.attributes["no_room"]["offline_devices"] == ["Phone"]
     kit = hass.states.get("sensor.house_os_kitchen_attention")
     assert kit is not None, [s.entity_id for s in hass.states.async_all("sensor")]
     assert kit.state == "2"

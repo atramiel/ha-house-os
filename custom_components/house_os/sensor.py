@@ -153,10 +153,13 @@ class HouseAttentionSensor(CoordinatorEntity[RollupCoordinator], SensorEntity):
 
     def _merged(self) -> AreaReport:
         out = AreaReport()
-        for rep in (self.coordinator.data or {}).values():
+        for area_id, rep in (self.coordinator.data or {}).items():
             out.maintenance += rep.maintenance
-            out.offline += rep.offline
             out.batteries += rep.batteries
+            # Devices with no room are mostly network clients (phones, laptops
+            # that are away); they stay listed under no_room but don't count.
+            if area_id != NO_AREA:
+                out.offline += rep.offline
         return out
 
     @property
